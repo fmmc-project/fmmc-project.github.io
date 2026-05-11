@@ -4,185 +4,607 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>FMMC: Foundation Models for Material Classification</title>
-
-  <style>
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-      margin: 0;
-      background: #ffffff;
-      color: #222;
-      line-height: 1.6;
-    }
-
-    .container {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 48px 24px;
-    }
-
-    .hero {
-      text-align: center;
-      padding: 32px 0 24px;
-    }
-
-    h1 {
-      font-size: 42px;
-      line-height: 1.15;
-      margin-bottom: 12px;
-    }
-
-    .subtitle {
-      font-size: 22px;
-      color: #555;
-      margin-bottom: 12px;
-    }
-
-    .venue {
-      font-size: 20px;
-      font-weight: 600;
-      margin-bottom: 24px;
-    }
-
-    .authors {
-      font-size: 18px;
-      margin-bottom: 28px;
-    }
-
-    .buttons {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-bottom: 36px;
-    }
-
-    .button {
-      display: inline-block;
-      padding: 10px 18px;
-      border-radius: 999px;
-      background: #222;
-      color: white;
-      text-decoration: none;
-      font-weight: 500;
-    }
-
-    .button.disabled {
-      background: #aaa;
-      cursor: default;
-    }
-
-    section {
-      margin-top: 56px;
-    }
-
-    h2 {
-      font-size: 28px;
-      border-bottom: 1px solid #ddd;
-      padding-bottom: 8px;
-    }
-
-    .placeholder {
-      background: #f5f5f5;
-      border: 1px dashed #ccc;
-      border-radius: 12px;
-      padding: 42px;
-      text-align: center;
-      color: #666;
-      margin-top: 16px;
-    }
-
-    pre {
-      background: #f7f7f7;
-      padding: 16px;
-      border-radius: 8px;
-      overflow-x: auto;
-      text-align: left;
-    }
-
-    footer {
-      margin-top: 72px;
-      padding-top: 24px;
-      border-top: 1px solid #ddd;
-      text-align: center;
-      color: #777;
-      font-size: 14px;
-    }
-  </style>
+  <meta name="description"
+        content="FMMC — Harnessing the Power of Foundation Models for Accurate Material Classification. CVPR 2026. Qingran Lin, Fengwei Yang, Chaolun Zhu." />
+  <link rel="stylesheet" href="static/css/style.css" />
 </head>
-
 <body>
-  <main class="container">
-    <header class="hero">
-      <h1>FMMC: Foundation Models for Material Classification</h1>
 
-      <div class="subtitle">
-        Harnessing the Power of Foundation Models for Accurate Material Classification
-      </div>
-
-      <div class="venue">CVPR 2026</div>
-
-      <div class="authors">
-        Qingran Lin · Fengwei Yang · Chaolun Zhu
-      </div>
-
-      <div class="buttons">
-        <a class="button" href="https://arxiv.org/abs/2603.17390" target="_blank">Paper</a>
-        <a class="button" href="https://arxiv.org/abs/2603.17390" target="_blank">arXiv</a>
-        <span class="button disabled">Code Coming Soon</span>
-        <span class="button disabled">Dataset Coming Soon</span>
-      </div>
-
-      <div class="placeholder">
-        Teaser image / pipeline figure goes here
-      </div>
-    </header>
-
-    <section>
-      <h2>Abstract</h2>
-      <p>
-        Material classification is important for visual understanding, graphics, and embodied AI,
-        but large-scale annotated material datasets remain limited. FMMC leverages foundation models
-        to improve material classification through synthetic data generation, automatic labeling,
-        and vision-language prior guided fine-tuning.
-      </p>
-    </section>
-
-    <section>
-      <h2>Method</h2>
-      <p>
-        Our framework consists of three key components:
-      </p>
-      <ul>
-        <li>Material-centric image generation using foundation models.</li>
-        <li>Automatic label assignment by combining object semantics and material attributes.</li>
-        <li>Joint fine-tuning with vision-language priors for accurate material recognition.</li>
+  <!-- ── Navigation ─────────────────────────────────────────────────── -->
+  <nav class="topnav" aria-label="Site navigation">
+    <div class="nav-inner">
+      <a class="nav-brand" href="#hero">FMMC</a>
+      <ul class="nav-links">
+        <li><a href="#abstract">Abstract</a></li>
+        <li><a href="#method">Method</a></li>
+        <li><a href="#results">Results</a></li>
+        <li><a href="#citation">Citation</a></li>
       </ul>
+    </div>
+  </nav>
 
-      <div class="placeholder">
-        Method pipeline figure goes here
+  <div class="page-wrap">
+
+    <!-- ── Hero ────────────────────────────────────────────────────────── -->
+    <header class="hero" id="hero">
+
+      <p class="venue-badge">CVPR 2026</p>
+
+      <h1 class="hero-title">
+        FMMC: Foundation Models for<br>Material Classification
+      </h1>
+
+      <p class="paper-full-title">
+        Harnessing the Power of Foundation Models for Accurate Material Classification
+      </p>
+
+      <p class="author-block">
+        <span class="author-name">Qingran Lin</span><sup>&#8727;,1</sup>,&ensp;
+        <span class="author-name">Fengwei Yang</span><sup>&#8727;,2</sup>,&ensp;
+        <span class="author-name">Chaolun Zhu</span><sup>3</sup>
+      </p>
+
+      <div class="affil-block">
+        <span><sup>1</sup>&thinsp;Georgia Institute of Technology</span>
+        <span><sup>2</sup>&thinsp;Duke University</span>
+        <span><sup>3</sup>&thinsp;Waseda University</span>
+      </div>
+
+      <p class="equal-note"><sup>&#8727;</sup>&thinsp;Equal contribution</p>
+
+      <div class="btn-row">
+        <!-- CVPR -->
+        <a class="btn"
+           href="https://cvpr.thecvf.com/virtual/2026/poster/38933"
+           target="_blank" rel="noopener noreferrer">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2"
+               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+            <line x1="8" y1="21" x2="16" y2="21"/>
+            <line x1="12" y1="17" x2="12" y2="21"/>
+          </svg>
+          CVPR
+        </a>
+
+        <!-- Paper -->
+        <a class="btn"
+           href="https://arxiv.org/abs/2603.17390"
+           target="_blank" rel="noopener noreferrer">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2"
+               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+            <polyline points="14 2 14 8 20 8"/>
+            <line x1="16" y1="13" x2="8" y2="13"/>
+            <line x1="16" y1="17" x2="8" y2="17"/>
+          </svg>
+          Paper
+        </a>
+
+        <!-- arXiv -->
+        <a class="btn"
+           href="https://arxiv.org/abs/2603.17390"
+           target="_blank" rel="noopener noreferrer">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2"
+               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+            <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+          </svg>
+          arXiv
+        </a>
+
+        <!-- Code -->
+        <span class="btn btn-ghost">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2"
+               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="16 18 22 12 16 6"/>
+            <polyline points="8 6 2 12 8 18"/>
+          </svg>
+          Code &nbsp;&middot;&nbsp; Coming Soon
+        </span>
+
+        <!-- Dataset -->
+        <span class="btn btn-ghost">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2"
+               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <ellipse cx="12" cy="5" rx="9" ry="3"/>
+            <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/>
+            <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
+          </svg>
+          Dataset &nbsp;&middot;&nbsp; Coming Soon
+        </span>
+
+        <!-- BibTeX anchor -->
+        <a class="btn btn-outline" href="#citation">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2"
+               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"/>
+            <path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/>
+          </svg>
+          BibTeX
+        </a>
+      </div>
+
+    </header>
+    <!-- /Hero -->
+
+    <!-- ── Teaser ──────────────────────────────────────────────────────── -->
+    <section class="teaser" aria-label="Teaser figure">
+      <div class="figure-wrap">
+        <!--
+          Place the teaser image at: static/images/teaser.png
+          Recommended: export Figure 1 from the paper (material image generation
+          and real-image prediction results).
+        -->
+        <img
+          src="static/images/teaser.png"
+          alt="FMMC teaser: generated material images and real-image material prediction results"
+          class="fig-img"
+          onerror="this.style.display='none'; document.getElementById('teaser-ph').style.display='flex';"
+        />
+        <div class="fig-ph" id="teaser-ph" style="display:none">
+          <div class="ph-icon" aria-hidden="true">
+            <svg width="44" height="44" viewBox="0 0 24 24" fill="none"
+                 stroke="#c8ccd2" stroke-width="1.4"
+                 stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+              <circle cx="8.5" cy="8.5" r="1.5"/>
+              <polyline points="21 15 16 10 5 21"/>
+            </svg>
+          </div>
+          <p class="ph-label">Teaser Figure</p>
+          <p class="ph-hint">
+            Add <code>static/images/teaser.png</code> to display this figure.<br>
+            <span class="ph-suggest">Recommended: export <strong>Figure 1</strong> from the paper.</span>
+          </p>
+        </div>
+      </div>
+      <p class="fig-caption">
+        <strong>Figure 1.</strong>
+        FMMC leverages vision-language foundation models to synthesize material-centric
+        training images with automatic semantic annotations, and distills cross-modal priors
+        through a dual-stream architecture for accurate material classification across diverse
+        real-world scenes.
+      </p>
+    </section>
+    <!-- /Teaser -->
+
+    <!-- ── Abstract ────────────────────────────────────────────────────── -->
+    <section class="section" id="abstract">
+      <h2>Abstract</h2>
+      <div class="abstract-body">
+        <p>
+          Material classification has emerged as a critical task in computer vision and graphics,
+          supporting the assignment of accurate material properties to a wide range of digital and
+          real-world applications. While traditionally framed as an image classification task, this
+          domain faces significant challenges due to the scarcity of annotated data, limiting the
+          accuracy and generalizability of trained models. Recent advances in vision-language
+          foundation models (VLMs) offer promising avenues to address these issues, yet existing
+          solutions leveraging these models still exhibit unsatisfying results in material recognition
+          tasks.
+        </p>
+        <p>
+          In this work, we propose a novel framework that effectively harnesses foundation models to
+          overcome data limitations and enhance classification accuracy. Our method integrates two key
+          innovations: (a) a robust image generation and auto-labeling pipeline that creates a diverse
+          and high-quality training dataset with material-centric images, and automatically assigns
+          labels by fusing object semantics and material attributes in text prompts; (b) a prior
+          incorporation strategy to distill information from VLMs, combined with a joint fine-tuning
+          method that optimizes a pre-trained vision foundation model alongside VLM-derived priors,
+          preserving broad generalizability while adapting to material-specific features. Extensive
+          experiments demonstrate significant improvements on multiple datasets.
+        </p>
       </div>
     </section>
+    <!-- /Abstract -->
 
-    <section>
+    <!-- ── Method ──────────────────────────────────────────────────────── -->
+    <section class="section" id="method">
+      <h2>Method</h2>
+
+      <!-- Figure 2: Dataset generation workflow -->
+      <div class="figure-wrap">
+        <img
+          src="static/images/figure2.png"
+          alt="FMMC dataset generation workflow: hierarchical prompt engineering, diffusion-based image generation, semantic mask extraction, and region-aware material label assignment"
+          class="fig-img"
+          onerror="this.style.display='none'; document.getElementById('fig2-ph').style.display='flex';"
+        />
+        <div class="fig-ph" id="fig2-ph" style="display:none">
+          <div class="ph-icon" aria-hidden="true">
+            <svg width="44" height="44" viewBox="0 0 24 24" fill="none"
+                 stroke="#c8ccd2" stroke-width="1.4"
+                 stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+              <circle cx="8.5" cy="8.5" r="1.5"/>
+              <polyline points="21 15 16 10 5 21"/>
+            </svg>
+          </div>
+          <p class="ph-label">Figure 2 — Dataset Generation Workflow</p>
+          <p class="ph-hint">Add <code>static/images/figure2.png</code> to display this figure.</p>
+        </div>
+      </div>
+      <p class="fig-caption">
+        <strong>Figure 2.</strong>
+        Dataset generation workflow. Our pipeline synthesizes labeled material images through:
+        (a) hierarchical prompt engineering with LLM-guided plausibility filtering,
+        (b) diffusion-based image generation with model selection,
+        (c) semantic mask extraction via Grounding DINO and Grounded SAM, and
+        (d) region-aware material label assignment.
+      </p>
+
+      <!-- Figure 4: Dual-stream architecture -->
+      <div class="figure-wrap" style="margin-top: 36px;">
+        <img
+          src="static/images/pipeline.png"
+          alt="FMMC dual-stream architecture: DINOv2 visual stream and GPT-4v/CLIP language stream fused by MLP"
+          class="fig-img"
+          onerror="this.style.display='none'; document.getElementById('pipeline-ph').style.display='flex';"
+        />
+        <div class="fig-ph" id="pipeline-ph" style="display:none">
+          <div class="ph-icon" aria-hidden="true">
+            <svg width="44" height="44" viewBox="0 0 24 24" fill="none"
+                 stroke="#c8ccd2" stroke-width="1.4"
+                 stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+              <circle cx="8.5" cy="8.5" r="1.5"/>
+              <polyline points="21 15 16 10 5 21"/>
+            </svg>
+          </div>
+          <p class="ph-label">Figure 4 — Dual-Stream Architecture</p>
+          <p class="ph-hint">Add <code>static/images/pipeline.png</code> to display this figure.</p>
+        </div>
+      </div>
+      <p class="fig-caption">
+        <strong>Figure 4.</strong>
+        The dual-stream architecture of FMMC. The visual stream (DINOv2) extracts dense patch
+        features with mask-based pooling, while the language stream encodes GPT-4v–generated
+        material descriptions via CLIP. Both streams are fused by a lightweight MLP projection
+        head for final material category prediction.
+      </p>
+
+      <!-- Method cards -->
+      <div class="method-grid">
+
+        <div class="mcard">
+          <p class="mcard-num">01</p>
+          <h3>Synthetic Data Generation</h3>
+          <p>
+            Hierarchical prompt engineering—validated by ChatGPT for semantic
+            plausibility of object–material pairings—drives Stable Diffusion v2.1 to
+            synthesize diverse, balanced, and material-centric training images at scale,
+            addressing the fundamental data scarcity challenge in material recognition.
+          </p>
+        </div>
+
+        <div class="mcard">
+          <p class="mcard-num">02</p>
+          <h3>Automatic Annotation</h3>
+          <p>
+            Grounding DINO localizes material regions in synthesized images, and
+            Grounded SAM produces precise instance masks that are mapped to material
+            categories. This fully automatic pipeline achieves 98% annotation accuracy,
+            eliminating the need for costly manual labeling.
+          </p>
+        </div>
+
+        <div class="mcard">
+          <p class="mcard-num">03</p>
+          <h3>Dual-Stream Fusion</h3>
+          <p>
+            A visual stream leverages DINOv2 to extract dense patch-level features with
+            mask-based pooling, while a language stream encodes GPT-4v–generated material
+            descriptions using CLIP into semantic embeddings. Both streams are integrated
+            by a lightweight MLP projection head for classification.
+          </p>
+        </div>
+
+        <div class="mcard">
+          <p class="mcard-num">04</p>
+          <h3>Joint Fine-Tuning with VLM Priors</h3>
+          <p>
+            A pre-trained vision foundation model is jointly optimized alongside
+            VLM-derived priors in a tailored fine-tuning strategy that preserves
+            broad visual generalizability while adapting specifically to
+            material-discriminative features.
+          </p>
+        </div>
+
+      </div>
+    </section>
+    <!-- /Method -->
+
+    <!-- ── Results ─────────────────────────────────────────────────────── -->
+    <section class="section" id="results">
       <h2>Results</h2>
-      <div class="placeholder">
-        Quantitative and qualitative results go here
+
+      <!-- ── Quantitative Comparison ───────────────────────────────────── -->
+      <h3 class="subsec-h">Quantitative Comparison</h3>
+      <p class="results-lead">
+        FMMC is evaluated on three standard material recognition benchmarks:
+        <strong>FMD</strong> (10 categories), <strong>DMS-test</strong> (21 categories),
+        and <strong>Google-test</strong> (21 categories). Our method substantially
+        outperforms MatSim and zero-shot VLM baselines (CLIP, GPT-4v) across all benchmarks.
+        Zero-shot baselines reach only 38–43% accuracy on DMS-test, highlighting the
+        limitation of foundation models without task-specific fine-tuning.
+      </p>
+
+      <!-- Table 1 -->
+      <div class="table-figure">
+        <div class="table-scroll-wrap">
+          <img
+            src="static/images/table1.png"
+            alt="Table 1: Per-class classification accuracy on FMD (10 categories). CLIP: 0.80, GPT-4v: 0.74, MatSim: 0.56, Ours: 0.89 average."
+            class="table-img"
+          />
+        </div>
+        <p class="table-cap">
+          <strong>Table 1.</strong> Comparison with state-of-the-art methods on the FMD dataset
+          (10 classes). All values denote classification accuracy. Best result per row in
+          <strong>bold</strong>. FMMC achieves the highest average accuracy of 0.89.
+        </p>
+      </div>
+
+      <!-- Table 2 -->
+      <div class="table-figure">
+        <div class="table-scroll-wrap">
+          <img
+            src="static/images/table2.png"
+            alt="Table 2: Classification accuracy on DMS-test and Google-test. Ours achieves 0.64 on DMS-test and 0.92 on Google-test."
+            class="table-img"
+          />
+        </div>
+        <p class="table-cap">
+          <strong>Table 2.</strong> Comparison on DMS-test (21 classes) and Google-test
+          (21 classes). All values denote classification accuracy. FMMC achieves 0.64 on
+          DMS-test and 0.92 on Google-test, outperforming all baselines.
+        </p>
+      </div>
+
+      <!-- ── Ablation Studies ───────────────────────────────────────────── -->
+      <h3 class="subsec-h">Ablation Studies</h3>
+      <p class="ablation-lead">
+        We ablate three key design dimensions: (1) synthetic dataset quality vs. real DMS
+        training data, (2) the contribution of each stream in the dual-stream architecture,
+        and (3) the choice of vision backbone. Results confirm that our synthetic data
+        generalizes better to unseen distributions, both streams contribute complementary
+        signals, and DINOv2 with head-only fine-tuning is the superior backbone choice.
+      </p>
+
+      <!-- Table 3 -->
+      <div class="table-figure">
+        <div class="table-scroll-wrap">
+          <img
+            src="static/images/table3.png"
+            alt="Table 3: Dataset quality comparison (mIoU|mAcc). Our synthetic data outperforms DMS training data on Google-test and FMD."
+            class="table-img"
+          />
+        </div>
+        <p class="table-cap">
+          <strong>Table 3.</strong> Comparison of material classification with DMS dataset
+          (mIoU | mAcc). Our synthetic data achieves better cross-domain generalization on
+          Google-test and FMD, while DMS training data shows higher in-domain DMS-test scores.
+        </p>
+      </div>
+
+      <!-- Table 4 -->
+      <div class="table-figure">
+        <div class="table-scroll-wrap">
+          <img
+            src="static/images/table4.png"
+            alt="Table 4: Module ablation. Both language (GPT-4v+CLIP) and vision (DINOv2) priors contribute; combining them achieves the best performance."
+            class="table-img"
+          />
+        </div>
+        <p class="table-cap">
+          <strong>Table 4.</strong> Influence of the language stream (GPT-4v + CLIP) and
+          vision stream (DINOv2) on material classification (mIoU | mAcc). Combining both
+          streams yields the best performance across all three benchmarks.
+        </p>
+      </div>
+
+      <!-- Table 5 -->
+      <div class="table-figure">
+        <div class="table-scroll-wrap">
+          <img
+            src="static/images/table5.png"
+            alt="Table 5: Vision backbone comparison (mIoU|mAcc). DINOv2 with head-only fine-tuning achieves 0.79|0.88, substantially outperforming ResNet-101 and ViT-L/16."
+            class="table-img"
+          />
+        </div>
+        <p class="table-cap">
+          <strong>Table 5.</strong> Comparison across vision backbones (mIoU | mAcc).
+          DINOv2 with head-only fine-tuning substantially outperforms ResNet-101 and
+          ViT-L/16 under both head-only and full fine-tuning settings.
+        </p>
+      </div>
+
+      <!-- ── Qualitative Results ────────────────────────────────────────── -->
+      <h3 class="subsec-h">Qualitative Results</h3>
+      <div class="figure-wrap">
+        <img
+          src="static/images/results.png"
+          alt="Qualitative material classification results on real-world images"
+          class="fig-img"
+          onerror="this.style.display='none'; document.getElementById('results-ph').style.display='flex';"
+        />
+        <div class="fig-ph" id="results-ph" style="display:none">
+          <div class="ph-icon" aria-hidden="true">
+            <svg width="44" height="44" viewBox="0 0 24 24" fill="none"
+                 stroke="#c8ccd2" stroke-width="1.4"
+                 stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+              <circle cx="8.5" cy="8.5" r="1.5"/>
+              <polyline points="21 15 16 10 5 21"/>
+            </svg>
+          </div>
+          <p class="ph-label">Qualitative Results</p>
+          <p class="ph-hint">
+            Add <code>static/images/results.png</code> to display this figure.<br>
+            <span class="ph-suggest">Recommended: export Figure 1 from the paper.</span>
+          </p>
+        </div>
+      </div>
+
+    </section>
+    <!-- /Results -->
+
+    <!-- ── Resources ───────────────────────────────────────────────────── -->
+    <section class="section" id="resources">
+      <h2>Resources</h2>
+      <div class="resources-grid">
+
+        <!-- CVPR Poster -->
+        <a class="rcard"
+           href="https://cvpr.thecvf.com/virtual/2026/poster/38933"
+           target="_blank" rel="noopener noreferrer">
+          <div class="rcard-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2"
+                 stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+              <line x1="8" y1="21" x2="16" y2="21"/>
+              <line x1="12" y1="17" x2="12" y2="21"/>
+            </svg>
+          </div>
+          <div>
+            <p class="rcard-title">CVPR 2026 Poster</p>
+            <p class="rcard-sub">Conference page</p>
+          </div>
+        </a>
+
+        <!-- Paper -->
+        <a class="rcard"
+           href="https://arxiv.org/abs/2603.17390"
+           target="_blank" rel="noopener noreferrer">
+          <div class="rcard-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2"
+                 stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+            </svg>
+          </div>
+          <div>
+            <p class="rcard-title">Paper</p>
+            <p class="rcard-sub">arXiv:2603.17390</p>
+          </div>
+        </a>
+
+        <!-- arXiv -->
+        <a class="rcard"
+           href="https://arxiv.org/abs/2603.17390"
+           target="_blank" rel="noopener noreferrer">
+          <div class="rcard-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2"
+                 stroke-linecap="round" stroke-linejoin="round">
+              <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+              <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+            </svg>
+          </div>
+          <div>
+            <p class="rcard-title">arXiv</p>
+            <p class="rcard-sub">arXiv:2603.17390</p>
+          </div>
+        </a>
+
+        <!-- Code -->
+        <div class="rcard rcard-muted">
+          <div class="rcard-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2"
+                 stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="16 18 22 12 16 6"/>
+              <polyline points="8 6 2 12 8 18"/>
+            </svg>
+          </div>
+          <div>
+            <p class="rcard-title">Code</p>
+            <p class="rcard-sub">Coming soon</p>
+          </div>
+        </div>
+
+        <!-- Dataset -->
+        <div class="rcard rcard-muted">
+          <div class="rcard-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2"
+                 stroke-linecap="round" stroke-linejoin="round">
+              <ellipse cx="12" cy="5" rx="9" ry="3"/>
+              <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/>
+              <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
+            </svg>
+          </div>
+          <div>
+            <p class="rcard-title">Dataset</p>
+            <p class="rcard-sub">Coming soon</p>
+          </div>
+        </div>
+
+        <!-- Supplementary -->
+        <div class="rcard rcard-muted">
+          <div class="rcard-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2"
+                 stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+            </svg>
+          </div>
+          <div>
+            <p class="rcard-title">Supplementary</p>
+            <p class="rcard-sub">Coming soon</p>
+          </div>
+        </div>
+
       </div>
     </section>
+    <!-- /Resources -->
 
-    <section>
+    <!-- ── Citation ────────────────────────────────────────────────────── -->
+    <section class="section" id="citation">
       <h2>Citation</h2>
-      <pre>@article{lin2026harnessing,
-  title={Harnessing the Power of Foundation Models for Accurate Material Classification},
-  author={Lin, Qingran and Yang, Fengwei and Zhu, Chaolun},
-  journal={arXiv preprint arXiv:2603.17390},
-  year={2026}
+      <p class="cite-intro">If you find this work useful in your research, please consider citing:</p>
+      <div class="bibtex-wrap">
+        <button class="copy-btn" id="copy-btn" onclick="copyBibtex()"
+                aria-label="Copy BibTeX to clipboard">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2"
+               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+          </svg>
+          <span class="copy-label">Copy</span>
+        </button>
+        <pre id="bibtex-block">@inproceedings{lin2026fmmc,
+  title     = {Harnessing the Power of Foundation Models for Accurate Material Classification},
+  author    = {Lin, Qingran and Yang, Fengwei and Zhu, Chaolun},
+  booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+  year      = {2026}
 }</pre>
+      </div>
+      <p class="bibtex-note">
+        &#9432;&ensp;Official CVPR 2026 proceedings details (page numbers, DOI) will be updated after publication.
+      </p>
     </section>
+    <!-- /Citation -->
 
-    <footer>
-      © 2026 FMMC Project
-    </footer>
-  </main>
+  </div>
+  <!-- /page-wrap -->
+
+  <!-- ── Footer ──────────────────────────────────────────────────────── -->
+  <footer class="site-footer">
+    <p>© 2026 FMMC Project &nbsp;&middot;&nbsp; CVPR 2026</p>
+  </footer>
+
+  <script src="static/js/main.js"></script>
 </body>
 </html>
