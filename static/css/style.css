@@ -406,8 +406,8 @@ sup {
 /* 9. Resources
    -------------------------------------------------------------------------- */
 .resources-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  flex-wrap: wrap;
   gap: 12px;
 }
 
@@ -416,6 +416,8 @@ sup {
   align-items: center;
   gap: 13px;
   padding: 15px 17px;
+  flex: 1 1 calc(20% - 9.6px);
+  min-width: 160px;
   border: 1px solid #e6e8ea;
   border-radius: 11px;
   background: #fff;
@@ -558,8 +560,8 @@ a.rcard:hover {
     grid-template-columns: 1fr;
   }
 
-  .resources-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .resources-grid .rcard {
+    flex-basis: calc(50% - 6px);
   }
 
   .section {
@@ -581,8 +583,8 @@ a.rcard:hover {
     gap: 4px;
   }
 
-  .resources-grid {
-    grid-template-columns: 1fr;
+  .resources-grid .rcard {
+    flex-basis: 100%;
   }
 
   .btn-row {
